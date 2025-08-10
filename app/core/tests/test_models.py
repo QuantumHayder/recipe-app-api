@@ -20,5 +20,3 @@ class ModelTests(TestCase):
         self.assertTrue(user.check_password(password))
         # we used user.check_password instead of user.password,
         # becuase the password is hashed
-
-

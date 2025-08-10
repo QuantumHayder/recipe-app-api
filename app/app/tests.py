@@ -7,6 +7,7 @@ from django.test import SimpleTestCase
 
 from app import calc
 
+
 class CalcTests(SimpleTestCase):
     """Test the calc module"""
 
@@ -23,6 +24,6 @@ class CalcTests(SimpleTestCase):
         self.assertEqual(res, 5)
 
 
-# either group all the tests in 1 directory and this 
+# either group all the tests in 1 directory and this
 # dir must conatin a __init__.py
 # or place tests.py module inside each app

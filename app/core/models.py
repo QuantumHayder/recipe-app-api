@@ -19,14 +19,15 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
 
         return user
+
 class User(AbstractBaseUser, PermissionsMixin):
     "User in the system"
     email = models.EmailField(max_length=2555, unique=True)
     name = models.CharField(max_length=255)
-    is_active = models.BooleanField(default = True)
-    is_staff = models.BooleanField(default = False)
+    is_active = models.BooleanField(default=True)
+    is_staff = models.BooleanField(default=False)
     # To determine if user can log in to django admin
 
     objects = UserManager()
-    
+
     USERNAME_FIELD = 'email'

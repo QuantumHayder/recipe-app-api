@@ -12,10 +12,21 @@ class UserManager(BaseUserManager):
 
     def create_user(self, email, password=None, **extra_fields):
         "Create, save , and return a new user"
-        user = self.model(email=email, **extra_fields)
+        if not email:
+            raise ValueError('User must have an email')
+        user = self.model(email=self.normalize_email(email), **extra_fields)
         # **extra_fields is used in case we added new fields to the user
         # model in the future, we don't modify the code and pass them
         user.set_password(password)
+        user.save(using=self._db)
+
+        return user
+
+    def create_superuser(self, email, password):
+        """Create and return a new super user"""
+        user = self.create_user(email, password)
+        user.is_staff = True
+        user.is_superuser = True
         user.save(using=self._db)
 
         return user
@@ -32,3 +43,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     USERNAME_FIELD = 'email'
+
+"""superuser:
+    email:admin@example.com
+    password:admin123
+"""

@@ -40,7 +40,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     # To determine if user can log in to django admin
 
-
     objects = UserManager()
 
     USERNAME_FIELD = 'email'

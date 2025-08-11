@@ -7,7 +7,8 @@ from django.urls import reverse
 class AdminSiteTests(TestCase):
     """Tets for django admin."""
 
-    # special Django test method that runs before every test function in the class.
+    # special Django test method that runs before
+    # every test function in the class.
     def setUp(self):  # must be camelcase
         """create user and client"""
         # simulates HTTP requests without starting a server.
